@@ -1,0 +1,41 @@
+{% extends 'security/layout.html' %}
+
+{% block body %}
+<section id="content" class="m-t-lg wrapper-md animated fadeInUp">
+    <div class="container aside-xl">
+        <section class="m-b-lg">
+            <header class="wrapper text-center">
+                <strong>登录系统</strong>
+            </header>
+            <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+                {{ login_user_form.hidden_tag() }}
+                <div class="form-group">
+                    {{ render_field_with_errors(login_user_form.email,
+                    class='form-control no-border',
+                    placeholder="邮箱") }}
+                </div>
+                <div class="form-group">
+                    {{ render_field_with_errors(login_user_form.password,
+                    class='form-control no-border',
+                    placeholder="密码") }}
+                </div>
+                <div class="checkbox i-checks">
+                    <label>
+                        <input type="checkbox"><i></i> 记住我
+                    </label>
+                </div>
+                {{ render_field(login_user_form.next) }}
+                <button type="submit" class="btn btn-lg btn-primary btn-block">登录</button>
+                <div class="text-center m-t m-b"><a href="reset">
+                    <small>忘记密码?</small>
+                </a></div>
+                <div class="line line-dashed"></div>
+                <p class="text-muted text-center">
+                    <small>还没有注册账号?</small>
+                </p>
+                <a href="register" class="btn btn-lg btn-default btn-block">注册</a>
+            </form>
+        </section>
+    </div>
+</section>
+{% endblock %}

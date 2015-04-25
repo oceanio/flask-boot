@@ -1,0 +1,39 @@
+{% import 'admin/layout.html' as layout with context -%}
+{% extends 'admin/base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/static/css/icon.css" type="text/css"/>
+    <link rel="stylesheet" href="/static/css/font.css" type="text/css"/>
+    <link rel="stylesheet" href="/static/css/app.css" type="text/css"/>
+    <!--[if lt IE 9]>
+    <script src="/static/js/ie/html5shiv.js"></script>
+    <script src="/static/js/ie/respond.min.js"></script>
+    <script src="/static/js/ie/excanvas.js"></script>
+    <![endif]-->
+{% endblock %}
+
+{% block access_control %}
+{% if current_user.is_authenticated() %}
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" role="button">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ current_user.email }} <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="/auth/logout">Log out</a></li>
+        </ul>
+    </li>
+</ul>
+
+{% endif %}
+{% endblock %}
+
+{% block tail %}
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/static/js/app.plugin.js"></script>
+{% endblock %}
+
+
